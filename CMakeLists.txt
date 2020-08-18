@@ -4,9 +4,6 @@ cmake_minimum_required(VERSION 3.16.3)
 
 # flags
 
-# include files
-include_directories( ./include )
-
 # pkg-config calls
 find_package(PkgConfig REQUIRED) 
 
@@ -27,8 +24,13 @@ add_library(akinopallete STATIC
     src/pallete.cpp
     )
 
-target_link_libraries(akinopallete PUBLIC
-    PkgConfig::SDL2
+# include files
+target_include_directories(akinopallete 
+    PUBLIC ./include )
+
+# link libraries
+target_link_libraries(akinopallete 
+    PUBLIC PkgConfig::SDL2
     )
 
 # compile options
